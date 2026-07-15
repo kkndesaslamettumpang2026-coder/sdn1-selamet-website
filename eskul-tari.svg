@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <rect width="600" height="400" fill="#6C8CB0"/>
+  <circle cx="300" cy="170" r="60" fill="#FFFFFF" opacity="0.85"/>
+  <rect x="250" y="150" width="100" height="40" fill="#6C8CB0"/>
+  <text x="300" y="280" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Seni Tari</text>
+  <text x="300" y="310" font-family="Arial, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" opacity="0.8">Foto Placeholder</text>
+</svg>
