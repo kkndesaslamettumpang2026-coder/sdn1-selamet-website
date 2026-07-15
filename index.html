@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============ SEO DASAR ============ -->
+  <title>SDN 1 Selamet | Website Resmi Sekolah</title>
+  <meta name="description" content="Website resmi SDN 1 Selamet. Profil sekolah, visi & misi, guru, kegiatan ekstrakurikuler, lokasi, dan kontak.">
+  <meta name="keywords" content="SDN 1 Selamet, sekolah, profil sekolah, ekstrakurikuler, guru">
+  <meta name="author" content="SDN 1 Selamet">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#1B4F91">
+
+  <!-- Open Graph (tampilan saat link dibagikan di media sosial) -->
+  <meta property="og:title" content="SDN 1 Selamet | Website Resmi Sekolah">
+  <meta property="og:description" content="Profil sekolah, visi & misi, guru, ekstrakurikuler, lokasi, dan kontak SDN 1 Selamet.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/sekolah/sekolah-hero.svg">
+  <!-- TODO: setelah deploy ke Netlify, tambahkan og:url dengan domain asli -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo/logo.svg">
+
+  <!-- ============ GOOGLE FONTS ============ -->
+  <!-- Poppins untuk heading (tegas & modern), Inter untuk body text (mudah dibaca) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- ============ FONT AWESOME (ikon) ============ -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- ============ CSS UTAMA ============ -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Skip link untuk aksesibilitas (pengguna keyboard/screen reader) -->
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <!-- ============ PRELOADER ============ -->
+  <!-- Animasi loading sederhana, disembunyikan otomatis oleh script.js setelah halaman siap -->
+  <div id="preloader" aria-hidden="true">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- ============ NAVBAR (sticky) ============ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-container">
+
+      <a href="#home" class="navbar-brand">
+        <img src="assets/logo/SDN 1 Slamet.svg" alt="Logo SDN 1 Selamet" class="navbar-logo" width="44" height="44">
+        <span class="navbar-title">SDN 1 Selamet</span>
+      </a>
+
+      <!-- Tombol hamburger, hanya tampil di layar kecil (diatur di CSS) -->
+      <button class="navbar-toggle" id="navbarToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navbarMenu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav class="navbar-menu" id="navbarMenu" aria-label="Menu utama">
+        <ul>
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#visi-misi" class="nav-link">Visi &amp; Misi</a></li>
+          <li><a href="#guru" class="nav-link">Guru</a></li>
+          <li><a href="#ekstrakurikuler" class="nav-link">Ekstrakurikuler</a></li>
+          <li><a href="#kontak" class="nav-link">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============ HERO SECTION ============ -->
+    <section id="home" class="hero">
+      <img
+        src="assets/sekolah/Logo sekolah.svg"
+        alt="Gedung SDN 1 Selamet"
+        class="hero-bg"
+        fetchpriority="high">
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content" data-animate="fade-up">
+        <h1>SDN 1 Selamet</h1>
+        <p class="hero-slogan">Mencetak Generasi Unggul, Berkarakter, dan Berprestasi</p>
+        <a href="#kontak" class="btn btn-primary">Hubungi Kami</a>
+      </div>
+
+      <a href="#visi-misi" class="hero-scroll-indicator" aria-label="Gulir ke bawah">
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+    </section>
+
+    <!-- ============ VISI & MISI ============ -->
+    <section id="visi-misi" class="section">
+      <div class="container">
+        <p class="section-eyebrow" data-animate="fade-up">Arah dan Tujuan</p>
+        <h2 class="section-title" data-animate="fade-up">Visi &amp; Misi</h2>
+
+        <div class="vm-grid">
+          <div class="vm-card vm-card-highlight" data-animate="fade-up">
+            <div class="vm-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <h3>"Terwujudnya Generasi Emas yang Beriman, Berkarakter, Mandiri, dan Menguasai Teknologi Berlandaskan Nilai Luhur Desa Slamet."</h3>
+            <p>"Visi ini menekankan pembentukan karakter Profil Lulusan seperti keimanan, kemandirian, dan komunikasi. Selain itu, visi ini secara spesifik mencantumkan "nilai luhur Desa Slamet" untuk menonjolkan karakteristik dan potensi lokal sekolah. Hal ini juga relevan dengan latar belakang orang tua murid yang beragam, sehingga pendidikan karakter menjadi landasan yang kuat."</p>
+          </div>
+
+          <div class="vm-card" data-animate="fade-up" data-delay="1">
+            <div class="vm-icon"><i class="fa-solid fa-book-open"></i></div>
+            <h3>Misi dirancang sebagai langkah-langkah operasional yang akan dilakukan untuk mencapai visi tersebut. Berikut adalah Misi SD Negeri 1 Slamet untuk Tahun Ajaran 2025/2026:</h3>
+            <p>1.       Menumbuhkan Keimanan dan Ketakwaan Melalui Pembiasaan Ibadah dan Akhlak Mulia.</p>
+            <p>2.       Membentuk Karakter Murid yang Berjiwa Pancasila dan Berbudaya Nasional.</p>
+            <p>3.       Mengembangkan Kompetensi Murid untuk Menjadi Pembelajar Mandiri dan Kritis.</p>
+            <p>4.       Meningkatkan Literasi Digital Murid dan Pendidik Guna Menguasai Teknologi untuk Pembelajaran yang Efektif.</p>
+            <p>5.       Melestarikan Potensi Lokal Desa Slamet Melalui Pembelajaran Kontekstual.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GURU ============ -->
+    <section id="guru" class="section bg-alt">
+      <div class="container">
+        <p class="section-eyebrow" data-animate="fade-up">Tenaga Pendidik</p>
+        <h2 class="section-title" data-animate="fade-up">Guru Kami</h2>
+
+        <!-- Data dummy: ganti nama, jabatan, dan file foto sesuai kebutuhan -->
+        <div class="card-grid guru-grid">
+
+          <article class="guru-card" data-animate="fade-up">
+            <img src="assets/guru/Markus Suko Hartono,S.Pd.SD(kepala Sekolah).svg" alt="Foto Markus Suko Hartono,S.Pd.SD." loading="lazy" width="400" height="400">
+            <h3>Markus Suko Hartono,S.Pd.SD.</h3>
+            <p class="jabatan">Kepala Sekolah</p>
+          </article>
+
+          <article class="guru-card" data-animate="fade-up" data-delay="1">
+            <img src="assets/guru/KIKI PUTRI ANGGRAINI,S.Pd.Gr.(Guru Kelas 6).svg" alt="Foto KIKI PUTRI ANGGRAINI,S.Pd.Gr." loading="lazy" width="400" height="400">
+            <h3>KIKI PUTRI ANGGRAINI,S.Pd.Gr.</h3>
+            <p class="jabatan">Guru Kelas 6</p>
+          </article>
+
+          <article class="guru-card" data-animate="fade-up" data-delay="2">
+            <img src="assets/guru/M.Haris Rahmatullah,S.Pd.Gr.(guru kelas 5).svg" alt="Foto M.Haris Rahmatullah,S.Pd.Gr." loading="lazy" width="400" height="400">
+            <h3>M.Haris Rahmatullah,S.Pd.Gr.</h3>
+            <p class="jabatan">Guru Kelas 5</p>
+          </article>
+
+          <article class="guru-card" data-animate="fade-up" data-delay="3">
+            <img src="assets/guru/LINDA CAHYANTI,S.Pd.Gr.(Guru kelas 4).svg" alt="Foto LINDA CAHYANTI,S.Pd.Gr." loading="lazy" width="400" height="400">
+            <h3>LINDA CAHYANTI,S.Pd.Gr.</h3>
+            <p class="jabatan">Guru Kelas 4</p>
+          </article>
+
+          <article class="guru-card" data-animate="fade-up" data-delay="4">
+            <img src="assets/guru/Aulia Eva Mardiana,S.Pd.Gr.(guru kelas 3).svg" alt="Foto Aulia Eva Mardiana,S.Pd.Gr." loading="lazy" width="400" height="400">
+            <h3>Aulia Eva Mardiana,S.Pd.Gr.</h3>
+            <p class="jabatan">Guru Kelas 3</p>
+          </article>
+
+          <article class="guru-card" data-animate="fade-up" data-delay="5">
+            <img src="assets/guru/ANDITYA KHARISMA DINA,S.Pd.( guru kelas 2).svg" alt="Foto ANDITYA KHARISMA DINA,S.Pd." loading="lazy" width="400" height="400">
+            <h3>ANDITYA KHARISMA DINA,S.Pd.</h3>
+            <p class="jabatan">Guru Kelas 2</p>
+          </article>
+
+          <article class="guru-card" data-animate="fade-up" data-delay="5">
+            <img src="assets/guru/Ida Fatmawati,S.Pd.Gr.( guru kelas 1).svg" alt="Foto Ida Fatmawati,S.Pd.Gr." loading="lazy" width="400" height="400">
+            <h3>Ida Fatmawati,S.Pd.Gr.</h3>
+            <p class="jabatan">Guru Kelas 1</p>
+          </article>
+
+          <article class="guru-card" data-animate="fade-up" data-delay="5">
+            <img src="assets/guru/Ekie Pirama Handhini,S.Pd.I.Gr.( Guru Pai).svg" alt="Foto Ekie Pirama Handhini,S.Pd.I.Gr." loading="lazy" width="400" height="400">
+            <h3>Ekie Pirama Handhini,S.Pd.I.Gr.</h3>
+            <p class="jabatan">Guru PAI</p>
+          </article>
+
+          <article class="guru-card" data-animate="fade-up" data-delay="5">
+            <img src="assets/guru/Muhammad Syu_ud,S.Pd.Gr.(guru pjok).svg" alt="Foto Muhammad Syu_ud,S.Pd.Gr." loading="lazy" width="400" height="400">
+            <h3>Muhammad Syu'ud,S.Pd.Gr.</h3>
+            <p class="jabatan">Guru Pjok</p>
+          </article>
+
+          <article class="guru-card" data-animate="fade-up" data-delay="5">
+            <img src="assets/guru/Anggita Diah Ayu Ningrum,S.Pd.(tenaga administrasi).svg" alt="Foto Anggita Diah Ayu Ningrum,S.Pd." loading="lazy" width="400" height="400">
+            <h3>Anggita Diah Ayu Ningrum,S.Pd.</h3>
+            <p class="jabatan">Tenaga Administrasi</p>
+          </article>
+
+          <article class="guru-card" data-animate="fade-up" data-delay="5">
+            <img src="assets/guru/Moh. Irfan ( OLO ).svg" alt="Foto Moh. Irfan ( OLO )" loading="lazy" width="400" height="400">
+            <h3>Moh. Irfan</h3>
+            <p class="jabatan">Guru OLO</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EKSTRAKURIKULER ============ -->
+    <section id="ekstrakurikuler" class="section">
+      <div class="container">
+        <p class="section-eyebrow" data-animate="fade-up">Pengembangan Bakat</p>
+        <h2 class="section-title" data-animate="fade-up">Ekstrakurikuler</h2>
+
+        <!-- Data dummy: ganti nama, deskripsi, dan file foto sesuai kebutuhan -->
+        <div class="card-grid ekskul-grid">
+
+          <article class="ekskul-card" data-animate="fade-up">
+            <img src="assets/eskul/ekskul pramuka.svg" alt="Kegiatan Ekstrakurikuler Pramuka" loading="lazy" width="600" height="400">
+            <div class="ekskul-card-body">
+              <h3>Ekskul Pramuka</h3>
+              <p>Membentuk karakter siswa yang mandiri, disiplin, bertanggung jawab, serta memiliki jiwa kepemimpinan, kerja sama, dan kepedulian terhadap lingkungan.</p>
+            </div>
+          </article>
+
+          <article class="ekskul-card" data-animate="fade-up" data-delay="1">
+            <img src="assets/eskul/ekskul banjari.svg" alt="Kegiatan Ekstrakurikuler Banjari" loading="lazy" width="600" height="400">
+            <div class="ekskul-card-body">
+              <h3>Ekskul Banjari</h3>
+              <p>Mengembangkan kemampuan seni musik islami melalui lantunan shalawat dan permainan rebana, sekaligus menanamkan nilai-nilai religius, kekompakan, dan rasa percaya diri.</p>
+            </div>
+          </article>
+
+          <article class="ekskul-card" data-animate="fade-up" data-delay="2">
+            <img src="assets/eskul/ekskul karate.svg" alt="Kegiatan Ekstrakurikuler Karate" loading="lazy" width="600" height="400">
+            <div class="ekskul-card-body">
+              <h3>Ekskul Karate</h3>
+              <p>Melatih kemampuan bela diri, meningkatkan kebugaran jasmani, membentuk disiplin, keberanian, sportivitas, serta pengendalian diri siswa.</p>
+            </div>
+          </article>
+
+          <article class="ekskul-card" data-animate="fade-up" data-delay="3">
+            <img src="assets/eskul/ekskul menggambar.svg" alt="Kegiatan Ekstrakurikuler Menggambar" loading="lazy" width="600" height="400">
+            <div class="ekskul-card-body">
+              <h3>Ekskul Menggambar</h3>
+              <p>Wadah bagi siswa untuk mengembangkan kreativitas, imajinasi, serta keterampilan seni rupa melalui kegiatan menggambar, mewarnai, dan membuat berbagai karya seni.</p>
+            </div>
+          </article>
+
+          <article class="ekskul-card" data-animate="fade-up" data-delay="4">
+            <img src="assets/eskul/ekskul tari.svg" alt="Kegiatan Ekstrakurikuler Tari" loading="lazy" width="600" height="400">
+            <div class="ekskul-card-body">
+              <h3>Ekskul Tari</h3>
+              <p>Mengembangkan bakat seni tari sekaligus melatih keluwesan gerak, kepercayaan diri, disiplin, dan kecintaan terhadap seni budaya Indonesia.</p>
+            </div>
+          </article>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOKASI ============ -->
+    <section id="lokasi" class="section bg-alt">
+      <div class="container">
+        <p class="section-eyebrow" data-animate="fade-up">Temukan Kami</p>
+        <h2 class="section-title" data-animate="fade-up">Lokasi Sekolah</h2>
+
+        <div class="lokasi-wrapper" data-animate="fade-up">
+          <div class="lokasi-info">
+            <i class="fa-solid fa-location-dot"></i>
+            <p>2P3G+575, Jl. Wringinanom Raya, Ringin Anom, Slamet, Kecamatan Tumpang,<br>Kabupaten Malang, Jawa Timur, 65156</p>
+          </div>
+
+          <!-- TODO: ganti query pada URL di bawah dengan alamat sekolah asli -->
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps?q=2P3G+575,+Jl.+Wringinanom+Raya,+Ringin+Anom,+Slamet,+Kecamatan+Tumpang,+Kabupaten+Malang,+Jawa+Timur+65156&output=embed"
+              title="Peta Lokasi SDN 1 Selamet"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KONTAK ============ -->
+    <section id="kontak" class="section">
+      <div class="container">
+        <p class="section-eyebrow" data-animate="fade-up">Hubungi Kami</p>
+        <h2 class="section-title" data-animate="fade-up">Kontak</h2>
+        <p class="kontak-desc" data-animate="fade-up">Ada pertanyaan seputar sekolah? Silakan hubungi kami melalui kanal berikut.</p>
+
+        <!-- TODO: ganti nomor WhatsApp, akun Instagram/TikTok, dan email sesuai data asli -->
+        <div class="kontak-grid" data-animate="fade-up">
+          <a href="https://wa.me/6282234452387" target="_blank" rel="noopener noreferrer" class="kontak-card">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+          <a href="https://www.instagram.com/sdn1slamet_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="kontak-card">
+            <i class="fa-brands fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="https://www.tiktok.com/@sdnegeri1slamet_official?_r=1&_t=ZS-97p3SRJxMPp" target="_blank" rel="noopener noreferrer" class="kontak-card">
+            <i class="fa-brands fa-tiktok"></i>
+            <span>TikTok</span>
+          </a>
+          <a href="https://www.youtube.com/@sdnegeri1slamet_official?si=8m4kHK_Z1p8WoEi7" target="_blank" rel="noopener noreferrer" class="kontak-card">
+            <i class="fa-brands fa-youtube "></i>
+            <span>YouTube</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-container">
+
+      <div class="footer-brand">
+        <img src="assets/logo/SDN 1 Slamet.svg" alt="Logo SDN 1 Selamet" width="40" height="40">
+        <span>SDN 1 Selamet</span>
+      </div>
+
+      <div class="footer-social">
+        <a href="https://wa.me/6282234452387" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/sdn1slamet_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@sdnegeri1slamet_official?_r=1&_t=ZS-97p3SRJxMPp" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@sdnegeri1slamet_official?si=8m4kHK_Z1p8WoEi7" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube "></i></a>
+      </div>
+
+      <p class="footer-copyright">
+        &copy; <span id="currentYear"></span> SDN 1 Slamet. Seluruh hak cipta dilindungi.
+        <br>
+        <i>Website dikembangkan oleh KKN FSTeM Universitas Brawijaya 2026.</i>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============ TOMBOL BACK TO TOP ============ -->
+  <button id="backToTop" aria-label="Kembali ke atas">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ============ JAVASCRIPT UTAMA ============ -->
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#5A6B7B"/>
+  <circle cx="200" cy="160" r="70" fill="#FFFFFF" opacity="0.9"/>
+  <path d="M 90 340 Q 200 240 310 340 L 310 400 L 90 400 Z" fill="#FFFFFF" opacity="0.9"/>
+  <text x="200" y="380" font-family="Arial, sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle">Foto Guru B. Indonesia</text>
+</svg>

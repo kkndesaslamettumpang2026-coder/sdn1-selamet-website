@@ -1,0 +1,845 @@
+/* ==========================================================================
+   STYLE.CSS — SMA Negeri 1 Nusantara
+   Pendekatan: Mobile First. Gaya dasar untuk layar kecil ditulis dulu,
+   lalu diperbesar/disesuaikan lewat @media (min-width: ...) untuk
+   tablet (>=600px) dan desktop (>=1024px).
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. CSS VARIABLES
+   Ubah nilai di sini untuk mengubah tampilan di seluruh halaman sekaligus.
+   ========================================================================== */
+:root {
+  /* --- Warna --- */
+  --color-primary: #1B4F91;        /* Biru utama: navbar, tombol, aksen */
+  --color-primary-dark: #123A6B;   /* Biru gelap: hover state */
+  --color-primary-light: #EAF1FB;  /* Biru muda: background ikon, aksen lembut */
+
+  --color-white: #FFFFFF;
+  --color-gray-100: #F5F6F8;       /* Background alternatif antar section */
+  --color-gray-300: #DCE1E7;       /* Border tipis */
+  --color-gray-500: #8A95A1;       /* Teks sekunder */
+  --color-gray-700: #4B5563;       /* Teks paragraf */
+  --color-gray-900: #1F2937;       /* Teks utama / footer */
+
+  /* --- Tipografi --- */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* --- Skala Spacing (jarak antar elemen) --- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* --- Lainnya --- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --shadow-sm: 0 2px 10px rgba(27, 79, 145, 0.08);
+  --shadow-md: 0 12px 28px rgba(27, 79, 145, 0.14);
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.4s ease;
+  --navbar-height: 72px;
+  --max-width: 1200px;
+}
+
+
+/* ==========================================================================
+   2. RESET & BASE
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Kompensasi tinggi navbar sticky saat lompat ke anchor (#guru, #kontak, dst) */
+  scroll-padding-top: var(--navbar-height);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-gray-900);
+  background: var(--color-white);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.25;
+}
+
+/* Hormati preferensi pengguna yang mematikan animasi (aksesibilitas) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Outline fokus yang jelas untuk pengguna keyboard */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   3. UTILITAS UMUM
+   Class yang dipakai berulang di banyak section.
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.section {
+  padding-block: var(--space-2xl);
+}
+
+.bg-alt {
+  background: var(--color-gray-100);
+}
+
+.section-eyebrow {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: var(--space-xl);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2.1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+
+/* ==========================================================================
+   4. SKIP LINK (aksesibilitas — lompat ke konten utama)
+   ========================================================================== */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: var(--space-sm);
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  z-index: 2000;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
+
+/* ==========================================================================
+   5. PRELOADER (animasi loading sederhana)
+   Class ".hide" ditambahkan oleh script.js setelah halaman siap.
+   ========================================================================== */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-spinner {
+  width: 46px;
+  height: 46px;
+  border: 4px solid var(--color-gray-300);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ==========================================================================
+   6. NAVBAR (sticky)
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--color-white);
+  z-index: 1000;
+  box-shadow: 0 1px 0 var(--color-gray-300);
+  transition: box-shadow var(--transition-fast);
+}
+
+/* Class ".scrolled" ditambahkan oleh script.js saat halaman sudah discroll */
+.navbar.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.navbar-container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  height: var(--navbar-height);
+  padding-inline: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.navbar-logo {
+  border-radius: 50%;
+}
+
+.navbar-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+}
+
+/* --- Tombol Hamburger (mobile) --- */
+.navbar-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 24px;
+  z-index: 1100;
+}
+
+.navbar-toggle .bar {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--color-primary);
+  border-radius: 2px;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* Animasi ikon hamburger jadi tanda silang saat menu terbuka */
+.navbar-toggle[aria-expanded="true"] .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.navbar-toggle[aria-expanded="true"] .bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar-toggle[aria-expanded="true"] .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- Menu Mobile: panel slide-in dari kanan --- */
+.navbar-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(75%, 320px);
+  height: 100vh;
+  background: var(--color-white);
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.08);
+  padding: calc(var(--navbar-height) + var(--space-lg)) var(--space-lg) var(--space-lg);
+  transition: right var(--transition-medium);
+}
+
+/* Class ".active" ditambahkan oleh script.js saat tombol hamburger ditekan */
+.navbar-menu.active {
+  right: 0;
+}
+
+.navbar-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* --- Navbar versi tablet & desktop: menu tampil horizontal, hamburger hilang --- */
+@media (min-width: 768px) {
+  .navbar-toggle {
+    display: none;
+  }
+
+  .navbar-menu {
+    position: static;
+    width: auto;
+    height: auto;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .navbar-menu ul {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+}
+
+
+/* ==========================================================================
+   7. HERO SECTION
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(27, 79, 145, 0.6), rgba(18, 58, 107, 0.88));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: var(--color-white);
+  max-width: 700px;
+  padding-inline: var(--space-md);
+}
+
+.hero-content h1 {
+  font-size: clamp(1.9rem, 5vw, 3.25rem);
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.hero-slogan {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  opacity: 0.95;
+  margin-bottom: var(--space-lg);
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-white);
+  font-size: 1.4rem;
+  animation: bounce 2s infinite;
+  z-index: 2;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 10px); }
+}
+
+
+/* ==========================================================================
+   8. VISI & MISI
+   ========================================================================== */
+.vm-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.vm-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  text-align: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.vm-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Card "Visi" dibuat menonjol sebagai fokus utama section */
+.vm-card-highlight {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.vm-card-highlight .vm-icon {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+}
+
+.vm-icon {
+  width: 60px;
+  height: 60px;
+  margin-inline: auto;
+  margin-bottom: var(--space-sm);
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.vm-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-xs);
+}
+
+.vm-card p {
+  font-size: 0.95rem;
+  color: inherit;
+}
+
+.vm-card:not(.vm-card-highlight) p {
+  color: var(--color-gray-700);
+}
+
+@media (min-width: 600px) {
+  .vm-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .vm-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+/* ==========================================================================
+   9. GRID KARTU (dipakai bersama oleh Guru & Ekstrakurikuler)
+   ========================================================================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 600px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .card-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+/* ==========================================================================
+   10. GURU
+   ========================================================================== */
+.guru-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: var(--space-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.guru-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.guru-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin-bottom: var(--space-sm);
+}
+
+.guru-card h3 {
+  font-size: 1rem;
+  padding-inline: var(--space-sm);
+}
+
+.guru-card .jabatan {
+  font-size: 0.88rem;
+  color: var(--color-gray-500);
+  margin-top: 2px;
+}
+
+
+/* ==========================================================================
+   11. EKSTRAKURIKULER
+   ========================================================================== */
+.ekskul-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ekskul-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.ekskul-card img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+/* Efek zoom halus pada foto saat card di-hover */
+.ekskul-card:hover img {
+  transform: scale(1.06);
+}
+
+.ekskul-card-body {
+  padding: var(--space-md);
+}
+
+.ekskul-card-body h3 {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+}
+
+.ekskul-card-body p {
+  font-size: 0.92rem;
+  color: var(--color-gray-700);
+}
+
+
+/* ==========================================================================
+   12. LOKASI
+   ========================================================================== */
+.lokasi-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.lokasi-info {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.lokasi-info i {
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  margin-top: 3px;
+}
+
+.map-embed {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  min-height: 300px;
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  .lokasi-wrapper {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .lokasi-info { flex: 1; }
+  .map-embed { flex: 1.4; }
+}
+
+
+/* ==========================================================================
+   13. KONTAK
+   ========================================================================== */
+.kontak-desc {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto var(--space-xl);
+  color: var(--color-gray-700);
+}
+
+.kontak-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.kontak-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg) var(--space-sm);
+  text-align: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+              background var(--transition-fast), color var(--transition-fast);
+}
+
+.kontak-card i {
+  font-size: 1.7rem;
+  color: var(--color-primary);
+  transition: color var(--transition-fast);
+}
+
+.kontak-card span {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.kontak-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.kontak-card:hover i {
+  color: var(--color-white);
+}
+
+@media (min-width: 600px) {
+  .kontak-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+
+/* ==========================================================================
+   14. FOOTER
+   ========================================================================== */
+.footer {
+  background: var(--color-gray-900);
+  color: var(--color-gray-300);
+  padding-block: var(--space-xl);
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  text-align: center;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.footer-social {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.footer-social a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer-social a:hover {
+  background: var(--color-primary);
+  transform: translateY(-3px);
+}
+
+.footer-copyright {
+  font-size: 0.85rem;
+  color: var(--color-gray-500);
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+
+/* ==========================================================================
+   15. TOMBOL BACK TO TOP
+   Class ".show" ditambahkan oleh script.js saat halaman discroll melewati
+   batas tertentu.
+   ========================================================================== */
+#backToTop {
+  position: fixed;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity var(--transition-fast), visibility var(--transition-fast),
+              transform var(--transition-fast), background var(--transition-fast);
+  z-index: 900;
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#backToTop:hover {
+  background: var(--color-primary-dark);
+}
+
+
+/* ==========================================================================
+   16. ANIMASI SCROLL REVEAL
+   Elemen dengan atribut [data-animate] mulai tersembunyi, lalu script.js
+   menambahkan class ".in-view" saat elemen masuk viewport (IntersectionObserver).
+   Atribut [data-delay] membuat elemen dalam satu grid muncul bertahap.
+   ========================================================================== */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-animate].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-animate][data-delay="1"] { transition-delay: 0.1s; }
+[data-animate][data-delay="2"] { transition-delay: 0.2s; }
+[data-animate][data-delay="3"] { transition-delay: 0.3s; }
+[data-animate][data-delay="4"] { transition-delay: 0.4s; }
+[data-animate][data-delay="5"] { transition-delay: 0.5s; }
